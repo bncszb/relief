@@ -1,3 +1,10 @@
+data/local/rain_data
+data/local/search_results
+
+.DS_Store
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

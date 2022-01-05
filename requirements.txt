@@ -1,0 +1,6 @@
+ipykernel
+#Spacy
+#gensim
+pandas
+matplotlib
+seaborn

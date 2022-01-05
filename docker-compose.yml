@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  relief: #docker-compose run -d --name szb_relief relief
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - $DATA_DIR:/home/data/local/
+      - .:/home
+    image: "relief_img"
