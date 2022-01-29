@@ -2,8 +2,13 @@ data/local/rain_data
 data/local/search_results
 
 .DS_Store
-
-
+.vscode-server
+.pki
+.bash_history
+.python_history
+.ssh
+.ipython
+.local
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
