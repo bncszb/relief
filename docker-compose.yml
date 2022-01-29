@@ -1,10 +1,31 @@
 version: "3.9"
+
+# networks:
+#     web:
+#       driver:  bridge
+
 services:
-  relief: #docker-compose run -d --name szb_relief relief
-    build: .
+  search: #docker-compose run -d --name szb_relief relief
+    build: ./docker
+    # networks:
+    #   - web
     ports:
-      - "5000:5000"
+      - "5001:5000"
     volumes:
       - $DATA_DIR:/home/data/local/
-      - .:/home
-    image: "relief_img"
+      - .:/home/
+    image: "search_img"
+    depends_on:
+      - chrome
+    tty: true
+
+  chrome:
+    image: selenium/standalone-chrome:latest
+    hostname: chrome
+    # networks:
+    #   - web
+    ports:
+      - "4445:4445"
+    privileged: true
+    shm_size: 2g
+  
