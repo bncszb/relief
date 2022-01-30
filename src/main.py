@@ -1,4 +1,4 @@
-from numpy import datetime_data
+from ast import keyword
 import pandas as pd
 import utils.check_url as cu
 import utils.url_generator as ug
@@ -11,8 +11,18 @@ if __name__=="__main__":
     print("Sleeping 10 seconds...")
     time.sleep(10)
     print("Starting scraping...")
-    urls=ug.get_urls_for_keyword("gyurcsány")[:3]
+    keywords=ug.get_keywords()
 
-    results=cu.search_URLs(urls)
+    all_results=[]
+    for key in keywords:
+        print(f"Keyword: {key}")
+        urls=ug.get_urls_for_keyword(key)[:3]
 
-    results.to_csv("output.csv")
+        results=cu.search_URLs(urls)
+        results["key"]=key
+        results.to_csv(f"/home/data/local/search_results/{key}.csv")
+
+        all_results.append(results)
+
+    all_results_df=pd.concat(all_results)
+    all_results_df.to_excel("/home/data/local/search_results/all_keys.xlsx")
