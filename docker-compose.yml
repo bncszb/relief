@@ -29,3 +29,6 @@ services:
     privileged: true
     shm_size: 2g
   
+#   docker-compose up \
+# --abort-on-container-exit \
+# --exit-code-from search
