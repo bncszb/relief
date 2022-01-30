@@ -5,17 +5,36 @@ import pandas as pd
 from selenium.webdriver.common.by import By
 from datetime import datetime, timedelta
 
+def search_URLs_df(URL_df):
+
+    print("Creating driver...")
+    driver = webdriver.Remote(command_executor='http://chrome:4444')
+
+    res=[]
+
+    for i in URL_df.index:
+
+        URL = URL_df["url"].iloc[i]
+        area = URL_df["area"].iloc[i]
+
+        print("Getting url...")
+        driver.get(URL)
+        time.sleep(1)
+
+        results_df=check_URL(driver)
+        results_df["area"]=area
+
+        res.append(results_df)
+
+    all_results_df=pd.concat(res)
+
+    driver.close()
+    driver.quit()
+    return all_results_df
+
 
 def search_URL(URL):
 
-    # options = Options()
-    # options.headless = True
-    # options.add_argument("--no-sandbox")
-    # options.add_argument("--disable-gpu")
-    #options.add_argument(f'--proxy-server={None}')
-
-
-    # driver = webdriver.Chrome(options=options)
     print("Creating driver...")
     driver = webdriver.Remote(command_executor='http://chrome:4444')
     
@@ -59,13 +78,13 @@ def check_URL(driver):
     columns=[
         "link",
         "date",
-#        "keyword",
         "title"
         ]
     results_df=pd.DataFrame(columns=columns)
 
     results_section=driver.find_elements(By.CSS_SELECTOR,"div.results.ng-tns-c102-0")
-    assert len(results_section)==1, f"Result section not found at XPATH \nLink:{URL}"
+    assert len(results_section)==1, "Result section not found at XPATH \nLink:{URL}"
+
     results_section=results_section[0]
 
     results=results_section.find_elements(By.CSS_SELECTOR,"div.article-block.ng-star-inserted")

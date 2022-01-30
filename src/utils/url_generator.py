@@ -20,3 +20,15 @@ def get_urls_for_keyword (keyword):
         site_name=site_df["site_name"].iloc[i]
         urls.append(URL)
     return urls
+
+def get_search_df_for_keyword (keyword):
+    sites_path="/home/data/local/counties_NER.xlsx"
+    # sites_path="/Users/benceszabo/Side/relief/data/local/counties_NER.xlsx"
+
+    site_df=pd.read_excel(sites_path)
+    search="kereses?global_filter="
+
+    site_df["url"]=site_df["site"]+search+keyword
+    site_df["area"]=site_df["Megye neve"]
+    search_df=site_df[["area", "url"]]
+    return search_df
