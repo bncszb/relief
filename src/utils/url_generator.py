@@ -29,6 +29,6 @@ def get_search_df_for_keyword (keyword):
     search="kereses?global_filter="
 
     site_df["url"]=site_df["site"]+search+keyword
-    site_df["area"]=site_df["Megye neve"]
-    search_df=site_df[["area", "url"]]
+    site_df["region"]=site_df["Megye neve"]
+    search_df=site_df[["region", "url"]]
     return search_df

@@ -3,28 +3,48 @@ from selenium.webdriver.chrome.options import Options
 import time
 import pandas as pd
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime, timedelta
 
 def search_URLs_df(URL_df):
+    # turn off a few things to make scapring faster
+    #     options.experimental_options["prefs"] = { 
+    #     "profile.managed_default_content_settings.images": 2, 
+    #     "profile.managed_default_content_settings.stylesheets": 2, 
+    #     "profile.managed_default_content_settings.javascript": 2, 
+    #     "profile.managed_default_content_settings.cookies": 2, 
+    #     "profile.managed_default_content_settings.geolocation": 2, 
+    #     "profile.default_content_setting_values.notifications": 2, 
+    # }
 
     print("Creating driver...")
-    driver = webdriver.Remote(command_executor='http://chrome:4444')
+
+    opts = Options()
+    opts.add_argument("--headless")
+    # driver = webdriver.Remote(command_executor='http://localhost:4444', options=opts)
+    driver = webdriver.Remote(command_executor='http://chrome:4444', options=opts)
 
     res=[]
 
     for i in URL_df.index:
 
         URL = URL_df["url"].iloc[i]
-        area = URL_df["area"].iloc[i]
+        region = URL_df["region"].iloc[i]
 
-        print("Getting url...")
+        print(f"Getting url: {URL}...")
         driver.get(URL)
-        time.sleep(1)
+        try:
+            element = WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.XPATH,"/html/body/app-root/app-base/app-search/section/div/div/div[3]/app-article-card[1]/article/div/div[2]/a/h2"))
+            )
+            results_df=check_URL(driver)
+            results_df["region"]=region
 
-        results_df=check_URL(driver)
-        results_df["area"]=area
+            res.append(results_df)
+        except:
+            Exception(f"{URL} not loaded!")
 
-        res.append(results_df)
 
     all_results_df=pd.concat(res)
 
@@ -92,7 +112,6 @@ def check_URL(driver):
     print(f"Results: {len(results)}")
     if len(results)==0:
         print("No results")
-        driver.close()
         return
 
     for result in results:

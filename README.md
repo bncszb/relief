@@ -17,3 +17,10 @@ Report:
 
 Selenium: 
 - webdriver service: https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/
+- make things faster: https://seleniumjava.com/2015/12/12/how-to-make-selenium-webdriver-scripts-faster/
+    - waits https://selenium-python.readthedocs.io/waits.html
+- parallel:
+    - https://vigneshgig.medium.com/parallel-scraping-of-dynamic-website-using-selenium-9a7abed0af45
+    - https://testdriven.io/blog/concurrent-web-scraping-with-selenium-grid-and-docker-swarm/
+- questions:
+    - are these drivers automatically headless?

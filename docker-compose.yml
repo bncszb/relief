@@ -25,9 +25,13 @@ services:
     # networks:
     #   - web
     ports:
-      - "4445:4445"
+      - "4444:4444"
     privileged: true
     shm_size: 2g
+    environment:
+    # not tested properly
+      - SE_NODE_MAX_INSTANCES=5
+      - SE_NODE_MAX_SESSIONS=5
   
 #   docker-compose up \
 # --abort-on-container-exit \

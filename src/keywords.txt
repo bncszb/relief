@@ -1,3 +1,4 @@
-gyurcsány
-villámárvíz
-vihar
+tető
+viharkár
+orkán
+árvíz

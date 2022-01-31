@@ -16,7 +16,7 @@ if __name__=="__main__":
     all_results=[]
     for key in keywords:
         print(f"Keyword: {key}")
-        urls=ug.get_search_df_for_keyword(key)[:3]
+        urls=ug.get_search_df_for_keyword(key)
 
         results=cu.search_URLs_df(urls)
         results["key"]=key
