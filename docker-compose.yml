@@ -18,6 +18,10 @@ services:
     depends_on:
       - chrome
     tty: true
+    environment:
+      - TZ=Europe/Budapest 
+
+
 
   chrome:
     image: selenium/standalone-chrome:latest
@@ -32,6 +36,7 @@ services:
     # not tested properly
       - SE_NODE_MAX_INSTANCES=5
       - SE_NODE_MAX_SESSIONS=5
+      - TZ=Europe/Budapest 
   
 #   docker-compose up \
 # --abort-on-container-exit \
