@@ -14,6 +14,9 @@ Report:
 - sending files with python:
     - https://stackoverflow.com/questions/3362600/how-to-send-email-attachments
     - https://www.tutorialspoint.com/send-mail-with-attachment-from-your-gmail-account-using-python
+- drive:
+    - https://medium.com/@ammar.nomany.tanvir/read-write-update-drive-excel-file-with-pydrive-f63134120ff9
+    - https://stackoverflow.com/questions/58107431/how-to-create-a-sheet-under-a-specific-folder-with-google-api-for-python 
 
 Selenium: 
 - webdriver service: https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/
