@@ -17,6 +17,9 @@ Report:
 - drive:
     - https://medium.com/@ammar.nomany.tanvir/read-write-update-drive-excel-file-with-pydrive-f63134120ff9
     - https://stackoverflow.com/questions/58107431/how-to-create-a-sheet-under-a-specific-folder-with-google-api-for-python 
+- format:
+    - pandas merge rows to list https://www.geeksforgeeks.org/how-to-group-dataframe-rows-into-list-in-pandas-groupby/
+
 
 Selenium: 
 - webdriver service: https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/
@@ -25,5 +28,9 @@ Selenium:
 - parallel:
     - https://vigneshgig.medium.com/parallel-scraping-of-dynamic-website-using-selenium-9a7abed0af45
     - https://testdriven.io/blog/concurrent-web-scraping-with-selenium-grid-and-docker-swarm/
+- cache (and a bit of parallel):
+    - https://stackoverflow.com/questions/57591594/load-cache-on-all-application-servers-using-selenium
+    - https://sqa.stackexchange.com/questions/45933/how-do-i-enable-chromedriver-to-use-browser-cache-or-local-storage-with-selenium
 - questions:
     - are these drivers automatically headless?
+

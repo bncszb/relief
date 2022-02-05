@@ -7,8 +7,9 @@ import json
 
 def authorize():
     creds_path="/home/credentials/client_secret.json"
-    gc = pygsheets.authorize(client_secret=creds_path)
+    # creds_path="/home/credentials/sheets.googleapis.com-python.json"
 
+    gc = pygsheets.authorize(client_secret=creds_path)
     with open("/home/credentials/credentials.json") as f:
         creds_dict=json.load(f)
 

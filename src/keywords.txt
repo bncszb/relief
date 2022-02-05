@@ -1,4 +1,4 @@
-tető
-viharkár
-orkán
+vihar
+szél
+eső
 árvíz

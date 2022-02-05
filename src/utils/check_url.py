@@ -21,6 +21,13 @@ def search_URLs_df(URL_df):
     print("Creating driver...")
 
     opts = Options()
+    prefs = {
+        'profile.managed_default_content_settings.images':2,
+        'disk-cache-size': 4096,
+        
+    }
+    # opts.add_argument("--user-data-dir=/home/chrome_cache")
+    opts.add_experimental_option("prefs", prefs)
     opts.add_argument("--headless")
     # driver = webdriver.Remote(command_executor='http://localhost:4444', options=opts)
     driver = webdriver.Remote(command_executor='http://chrome:4444', options=opts)
