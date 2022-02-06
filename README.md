@@ -38,3 +38,8 @@ Solved problems:
 - docker-compose up not working on remote
     - docker build --no-cache --network host -t bence_seach docker
     - --network host was needed 
+
+- cron:
+    - have to change directory or give full path
+    - had to find out WHICH docker-compose I am using and use full name in sh file
+    - * 9,14 * * * cd /horanszky/bigdb/bence/relief && ./uok.sh
