@@ -34,3 +34,7 @@ Selenium:
 - questions:
     - are these drivers automatically headless?
 
+Solved problems:
+- docker-compose up not working on remote
+    - docker build --no-cache --network host -t bence_seach docker
+    - --network host was needed 
