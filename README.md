@@ -38,3 +38,4 @@ Solved problems:
 - docker-compose up not working on remote
     - docker build --no-cache --network host -t bence_seach docker
     - --network host was needed 
+- vscode remote: server.sh permission denied, noexec
