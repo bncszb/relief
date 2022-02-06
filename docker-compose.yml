@@ -4,11 +4,15 @@ version: "3.9"
 #     web:
 #       driver:  bridge
 
+
 services:
-  search: #docker-compose run -d --name szb_relief relief
-    build: ./docker
+  search:
+    build: 
+      context: ./docker
+      network: host
     # networks:
     #   - web
+    # network_mode: "host"
     ports:
       - "5001:5000"
     volumes:
@@ -26,6 +30,7 @@ services:
   chrome:
     image: selenium/standalone-chrome:latest
     hostname: chrome
+    # network_mode: "host"
     # networks:
     #   - web
     ports:

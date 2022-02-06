@@ -39,3 +39,8 @@ Solved problems:
     - docker build --no-cache --network host -t bence_seach docker
     - --network host was needed 
 - vscode remote: server.sh permission denied, noexec
+
+- cron:
+    - have to change directory or give full path
+    - had to find out WHICH docker-compose I am using and use full name in sh file
+    - * 9,14 * * * cd /horanszky/bigdb/bence/relief && ./uok.sh
