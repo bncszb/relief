@@ -9,7 +9,7 @@ def get_keywords(keywords_path="/home/src/keywords.txt"):
 
 
 def get_urls_for_keyword (keyword):
-    sites_path="/home/data/local/counties_NER.xlsx"
+    sites_path="/home/data/database/counties_NER.xlsx"
     site_df=pd.read_excel(sites_path)
 
     search="kereses?global_filter="
@@ -22,7 +22,7 @@ def get_urls_for_keyword (keyword):
     return urls
 
 def get_search_df_for_keyword (keyword):
-    sites_path="/home/data/local/counties_NER.xlsx"
+    sites_path="/home/data/database/counties_NER.xlsx"
     # sites_path="/Users/benceszabo/Side/relief/data/local/counties_NER.xlsx"
 
     site_df=pd.read_excel(sites_path)
