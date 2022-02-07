@@ -1,5 +1,0 @@
-[user]
-	name = bncszb
-	email = bszabo96@gmail.com
-[credential]
-	helper = "!f() { /home/newuser/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/node /tmp/vscode-remote-containers-8605d6f314b1096e3f7b10f1cf529d1642bb8d72.js $*; }; f"
