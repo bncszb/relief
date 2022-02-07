@@ -9,6 +9,7 @@ data/local/search_results
 .ssh
 .ipython
 .local
+.gitconfig
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
