@@ -1,6 +1,9 @@
 data/local/rain_data
 data/local/search_results
 
+credentials/*
+sheets.googleapis.com-python.json
+
 .DS_Store
 .vscode-server
 .pki
