@@ -6,7 +6,7 @@ from google.oauth2.credentials import Credentials
 import json
 
 def authorize():
-    creds_path="/home/credentials/client_secret.json"
+    creds_path="/home/credentials/credentials.json"
     # creds_path="/home/credentials/sheets.googleapis.com-python.json"
 
     gc = pygsheets.authorize(client_secret=creds_path)
