@@ -1,6 +1,9 @@
 data/local/rain_data
 data/local/search_results
 
+credentials/*
+sheets.googleapis.com-python.json
+
 .DS_Store
 .vscode-server
 .pki
@@ -9,6 +12,7 @@ data/local/search_results
 .ssh
 .ipython
 .local
+.gitconfig
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

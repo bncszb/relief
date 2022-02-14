@@ -6,14 +6,19 @@ from google.oauth2.credentials import Credentials
 import json
 
 def authorize():
-    creds_path="/home/credentials/credentials.json"
-    # creds_path="/home/credentials/sheets.googleapis.com-python.json"
+    creds_path="/home/credentials/creds.json"
+    # creds_path="/home/credentials/client_secret.json"
+    installed_creds_path="/home/sheets.googleapis.com-python.json"
 
     gc = pygsheets.authorize(client_secret=creds_path)
-    with open("/home/credentials/credentials.json") as f:
+    # with open("/home/credentials/credentials.json") as f:
+
+
+    with open(installed_creds_path) as f:
         creds_dict=json.load(f)
 
     creds=Credentials.from_authorized_user_info(creds_dict)
+    # creds=Credentials.from_authorized_user_file(creds_path)
     
     return gc, creds
 
