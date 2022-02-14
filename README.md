@@ -19,6 +19,8 @@ Report:
     - https://stackoverflow.com/questions/58107431/how-to-create-a-sheet-under-a-specific-folder-with-google-api-for-python 
 - format:
     - pandas merge rows to list https://www.geeksforgeeks.org/how-to-group-dataframe-rows-into-list-in-pandas-groupby/
+- credentials:
+    - downloaded json needed to install the sheets stuff? dont really understand
 
 
 Selenium: 
