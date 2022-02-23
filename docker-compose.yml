@@ -19,12 +19,13 @@ services:
       - $DATA_DIR:/home/data/local/
       - .:/home/
     image: "search_img"
-    depends_on:
-      - chrome
+    # depends_on:
+    #   - chrome
     tty: true
     environment:
       - TZ=Europe/Budapest 
 
+    # command: "python /home/src/main.py"
 
 
   chrome:

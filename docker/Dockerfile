@@ -9,4 +9,5 @@ COPY requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "/home/src/main.py"]
+# CMD ["python", "/home/src/main.py"]
+CMD bash
