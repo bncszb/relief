@@ -3,3 +3,7 @@ villámárvíz
 árvíz
 eső
 szél
+tető
+cserép
+dőlt
+sérült
