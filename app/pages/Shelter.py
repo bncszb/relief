@@ -54,6 +54,24 @@ if __name__ == '__main__':
     if "close_schools" not in st.session_state:
         st.session_state.close_schools = None
 
+    st.title("Shelter")
+    st.markdown("""
+    This page is for finding contact infos given the name of the settlement.
+    For this you have to:
+    - select the name of the settlement
+    - set a radius (in km) in which you plan to operate
+    
+    WARNING
+    This is a proof of concept site. The data, and the methods through which we gather them are NOT yet maintained.
+
+    Settlement contacts are scraped from: http://xn--tosz-5qa.hu/szolgaltatasaink/onkormanyzati-adatbazis/?telepules=   
+    School contacts are filtered from the dataframe published on 2022/10/22 at: https://dari.oktatas.hu/ -- 'Működő köznevelési feladatellátási helyek listája'  
+
+    TO DO:
+    - we need better error messages if the scraping is unsuccessful
+    - school database updates need to be added
+    """)
+
     st.session_state.settlement=st.selectbox("Settlement in need", st.session_state.settlement_coords["Settlement"])
 
     settlement_info=st.container()
