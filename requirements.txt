@@ -6,3 +6,4 @@ seaborn
 geopy
 scipy
 beautifulsoup4
+openpyxl
