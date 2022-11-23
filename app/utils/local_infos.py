@@ -8,7 +8,7 @@ from geopy import distance
 
 base_url="http://xn--tosz-5qa.hu/szolgaltatasaink/onkormanyzati-adatbazis/?telepules="
 print("Reading settlement coordinates")
-settlement_coords=pd.read_csv("../data/database/settlement_coordinates.csv")
+settlement_coords=pd.read_csv("../../data/database/settlement_coordinates.csv")
 
 
 def get_county_urls():
