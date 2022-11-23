@@ -10,7 +10,7 @@ sys.path.append("..")
 MAPBOX_TOKEN="pk.eyJ1IjoiYm5jc3piIiwiYSI6ImNsOWw3YmJ2MjFmemEzdW8wc2FnNThobXcifQ.vPHkFjv8WSsIgmS6tMlHhA"
 
 if "schools_data" not in st.session_state:
-    schools_data_path="/Users/benceszabo/Side/relief/data/database/kir_mukodo_feladatellatasi_helyek_2022_10_22.xlsx"
+    schools_data_path="app/data/kir_mukodo_feladatellatasi_helyek_2022_10_22.xlsx"
     print("Reading school data")
     st.session_state.schools_data = pd.read_excel(schools_data_path)
     col_ids=[3,7,8,9,10,12,13,14,25,26,28,64,65,66,67,69,73]
@@ -19,12 +19,12 @@ if "schools_data" not in st.session_state:
 
 if "town_urls" not in st.session_state:
     print("Reading town data")
-    with open("../../data/database/toosz_towns.json") as f:
+    with open("app/data/toosz_towns.json") as f:
         st.session_state.town_urls=json.load(f)
 
 if "settlement_coords" not in st.session_state:
     print("Reading settlement coordinates")
-    st.session_state.settlement_coords=pd.read_csv("../../data/database/settlement_coordinates.csv")
+    st.session_state.settlement_coords=pd.read_csv("app/data/settlement_coordinates.csv")
 
 
 def update_data():
