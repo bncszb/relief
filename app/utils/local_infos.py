@@ -4,7 +4,8 @@ import json
 import pandas as pd
 import time
 from geopy import distance
-
+import sys
+sys.path.append("..")
 
 base_url="http://xn--tosz-5qa.hu/szolgaltatasaink/onkormanyzati-adatbazis/?telepules="
 print("Reading settlement coordinates")
