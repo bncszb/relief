@@ -7,3 +7,4 @@ geopy
 scipy
 beautifulsoup4
 openpyxl
+xlsxwriter
