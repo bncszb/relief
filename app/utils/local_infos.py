@@ -45,7 +45,7 @@ def get_town_urls(county_opts):
     return all_towns
 
 def get_data_for_towns(towns):
-    with open("/Users/benceszabo/Side/relief/src/field/toosz_towns.json") as f:
+    with open("app/data/toosz_towns.json") as f:
         town_urls=json.load(f)
 
     df = pd.DataFrame(columns=['Polgármester e-mail', 'Polgármester', 'Cím', 'Önkormányzat telefon',
