@@ -4,12 +4,11 @@ import json
 import pandas as pd
 import time
 from geopy import distance
-import sys
-sys.path.append("..")
+
 
 base_url="http://xn--tosz-5qa.hu/szolgaltatasaink/onkormanyzati-adatbazis/?telepules="
 print("Reading settlement coordinates")
-settlement_coords=pd.read_csv("../data/settlement_coordinates.csv")
+settlement_coords=pd.read_csv("app/data/settlement_coordinates.csv")
 
 
 def get_county_urls():
