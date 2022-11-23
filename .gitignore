@@ -1,6 +1,8 @@
 data/local/rain_data
 data/local/search_results
 
+app/cache/rain_data/*
+
 credentials/*
 sheets.googleapis.com-python.json
 
