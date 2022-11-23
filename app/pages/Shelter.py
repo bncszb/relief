@@ -19,12 +19,12 @@ if "schools_data" not in st.session_state:
 
 if "town_urls" not in st.session_state:
     print("Reading town data")
-    with open("../data/database/toosz_towns.json") as f:
+    with open("../../data/database/toosz_towns.json") as f:
         st.session_state.town_urls=json.load(f)
 
 if "settlement_coords" not in st.session_state:
     print("Reading settlement coordinates")
-    st.session_state.settlement_coords=pd.read_csv("../data/database/settlement_coordinates.csv")
+    st.session_state.settlement_coords=pd.read_csv("../../data/database/settlement_coordinates.csv")
 
 
 def update_data():
