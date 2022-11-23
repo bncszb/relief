@@ -3,6 +3,8 @@ import json
 import pandas as pd
 import utils.local_infos as li
 from utils.misc import to_excel
+import sys
+sys.path.append("..")
 
 
 MAPBOX_TOKEN="pk.eyJ1IjoiYm5jc3piIiwiYSI6ImNsOWw3YmJ2MjFmemEzdW8wc2FnNThobXcifQ.vPHkFjv8WSsIgmS6tMlHhA"
