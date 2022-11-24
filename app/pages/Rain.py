@@ -14,11 +14,11 @@ def get_weather_report ():
     date=days[st.session_state.new_date].strftime("%Y%m%d")
     
     rain_data_url=f"https://odp.met.hu/weather/weather_reports/synoptic/hungary/daily_rain/csv/HABP_1RD_{date}.csv.zip"
-    dir_path=f"cache/rain_data/{date}"
+    dir_path=f"app/cache/rain_data/{date}"
 
     os.makedirs(dir_path, exist_ok=True)
     
-    file_path=f"cache/rain_data/{date}/HABP_1RD_{date}.csv.zip"
+    file_path=f"app/cache/rain_data/{date}/HABP_1RD_{date}.csv.zip"
 
     p.Path(dir_path).mkdir(exist_ok=True)
 

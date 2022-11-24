@@ -1,2 +1,2 @@
-cd news
+cd app/news
 scrapy crawl news

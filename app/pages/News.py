@@ -5,7 +5,7 @@ import os
 
 import subprocess
 
-db_path="cache/news/news.sqlite"
+db_path="app/cache/news/news.sqlite"
 
 query="""
 SELECT * FROM news_table
@@ -13,13 +13,13 @@ SELECT * FROM news_table
 
 def scrape_news():
 
-    subprocess.run(["bash","scripts/update_news.sh"])
+    subprocess.run(["bash","app/scripts/update_news.sh"])
 
 
 
 def export_keyword():
     print(os.getcwd())
-    with open("cache/news/keywords.txt", "w") as f:
+    with open("app/cache/news/keywords.txt", "w") as f:
         print(st.session_state.keyword, file=f)
 
 def update_table():
