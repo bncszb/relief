@@ -1,8 +1,5 @@
 import scrapy
 from ..items import NewsItem
-import json
-import parse
-import sys
 from ..utils import url_generator as ug
 from datetime import datetime, timedelta
 

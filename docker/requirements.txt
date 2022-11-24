@@ -1,9 +1,0 @@
-ipykernel
-#Spacy
-#gensim
-pandas
-matplotlib
-seaborn
-selenium
-openpyxl
-pygsheets
