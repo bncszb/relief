@@ -19,6 +19,7 @@ def scrape_news():
 
 def export_keyword():
     print(os.getcwd())
+    os.makedirs("app/cache/news", exist_ok=True)
     with open("app/cache/news/keywords.txt", "w") as f:
         print(st.session_state.keyword, file=f)
 
