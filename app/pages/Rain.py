@@ -8,6 +8,14 @@ from datetime import datetime, timedelta
 import streamlit as st
 import os
 import shutil
+import rasterio
+import numpy as np
+import matplotlib.pyplot as plt
+import xarray as xr
+from colorcet import fire
+import datashader.transfer_functions as tf
+import plotly.express as px
+import pandas as pd
 
 MAPBOX_TOKEN="pk.eyJ1IjoiYm5jc3piIiwiYSI6ImNsOWw3YmJ2MjFmemEzdW8wc2FnNThobXcifQ.vPHkFjv8WSsIgmS6tMlHhA"
 
@@ -65,14 +73,57 @@ def read_radar_data(radar_path):
     rain = 0.01*rain
     return rain
 
+def create_rain_fig(path):
+
+    LON_MIN=13.5
+    LON_MAX=25.5
+    LAT_MIN=44.004
+    LAT_MAX=50.5
+
+    LAT_STEPS=813
+    LON_STEPS=961
+
+    lat=np.linspace(LAT_MIN, LAT_MAX, LAT_STEPS)
+    lon=np.linspace(LON_MIN, LON_MAX, LON_STEPS)
+
+    coordinates = [[LON_MIN, LAT_MIN],
+                [LON_MAX, LAT_MIN],
+                [LON_MAX, LAT_MAX],
+                [LON_MIN, LAT_MAX]]
+
+    center=pd.DataFrame([[(LAT_MIN+LAT_MAX)/2,(LON_MIN+LON_MAX)/2]], columns=["Lat", "Lon"])
+    
+    radar_data=rasterio.open(path)
+    rain=radar_data.read(1)
+    rain=np.where(rain>0, 0.01*rain, np.NaN)
+    rain=xr.DataArray(rain,coords=[ ("Lat",lat),("Lon", lon),])
+
+    img = tf.shade(rain, cmap=fire)[::-1].to_pil()
+
+    fig = px.scatter_mapbox(center, lat='Lat', lon='Lon', zoom=5)
+    fig.update_layout(mapbox_style="carto-darkmatter",
+                    mapbox_layers = [
+                    {
+                        "sourcetype": "image",
+                        "source": img,
+                        "coordinates": coordinates
+                    }]
+    )
+    return fig
+
 def get_rain_data():
-    pass
+    radar_path=get_radar_data(1)[0]
+    fig=create_rain_fig(radar_path)
+    return fig
+
 
 if __name__ == '__main__':
 
     st.set_page_config(
     layout="wide"
     )
+
+    st.plotly_chart(get_rain_data())
 
     
 
