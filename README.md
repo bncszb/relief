@@ -12,4 +12,4 @@ A Scrapy solution to get search results for a certain keyword in the news portal
 ### Shelter
 This page is for finding contact infos in a certain range around a settlement.
 - Contacts for the local councils and mayors are scraped from [this](http://xn--tosz-5qa.hu/szolgaltatasaink/onkormanyzati-adatbazis/?telepules=) governmental site. 
-- School contacts are filtered from the regularly updated dataframe published [here](https://dari.oktatas.hu/), under- 'Működő köznevelési feladatellátási helyek listája'.
+- School contacts are filtered from the regularly updated dataframe published [here](https://dari.oktatas.hu/), under 'Működő köznevelési feladatellátási helyek listája'.
