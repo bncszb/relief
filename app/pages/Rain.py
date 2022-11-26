@@ -1,21 +1,18 @@
 import requests
 import zipfile
 
-import matplotlib.pyplot as plt
-from scipy.io import netcdf
 import numpy as np
 from datetime import datetime, timedelta
 import streamlit as st
 import os
-import shutil
 import rasterio
 import numpy as np
-import matplotlib.pyplot as plt
 import xarray as xr
 from colorcet import fire
 import datashader.transfer_functions as tf
 import plotly.express as px
 import pandas as pd
+import plotly.graph_objs as go
 
 MAPBOX_TOKEN="pk.eyJ1IjoiYm5jc3piIiwiYSI6ImNsOWw3YmJ2MjFmemEzdW8wc2FnNThobXcifQ.vPHkFjv8WSsIgmS6tMlHhA"
 
@@ -37,7 +34,7 @@ def get_radar_data(number_of_reports):
 
         cached_files=[f"app/cache/rain_data/{f}" for f in os.listdir(dir_path)]
 
-        yesterday=now-timedelta(days=1)
+        yesterday=now-timedelta(days=1, hours=1)
         timestamp=datetime.strftime(yesterday, "%Y%m%d_%H%M")
         yesterday_file=zip_path.format(timestamp)
 
@@ -125,12 +122,14 @@ def create_rain_fig(paths):
     center=pd.DataFrame([[(LAT_MIN+LAT_MAX)/2,(LON_MIN+LON_MAX)/2]], columns=["Lat", "Lon"])
     
     rain=read_radar_data(paths)
-    rain=np.where(rain>0, 0.01*rain, np.NaN)
+    rain=np.where(rain>0, 0.01*rain/12, np.NaN)
     rain=xr.DataArray(rain,coords=[ ("Lat",lat),("Lon", lon),])
 
-    img = tf.shade(rain, cmap=fire)[::-1].to_pil()
+    print(np.nanmax(rain.values))
 
-    fig = px.scatter_mapbox(center, lat='Lat', lon='Lon', zoom=5)
+    img = tf.shade(rain, cmap=fire, )[::-1].to_pil()
+
+    fig = px.scatter_mapbox(center, lat='Lat', lon='Lon', zoom=5, opacity=0)
     fig.update_layout(mapbox_style="carto-darkmatter",
                     mapbox_layers = [
                     {
@@ -139,9 +138,27 @@ def create_rain_fig(paths):
                         "coordinates": coordinates
                     },
                     ],
-                    height=800,
-                    width=1000
+                    height=600,
+                    width=1000,
+                    
     )
+    colorbar_trace  = go.Scatter(x=[None],
+                             y=[None],
+                             mode='markers',
+                             marker=dict(
+                                 colorscale=fire, 
+                                 cmin=np.nanmin(rain.values),
+                                 cmax=np.nanmax(rain.values),
+                                 colorbar=dict(thickness=5, outlinewidth=0),
+
+                             ),
+                             hoverinfo='none'
+                            )
+
+    fig['layout']['yaxis'] = {'title': 'y-axis', 'visible': False, 'showticklabels': False}
+    fig['layout']['xaxis'] = {'title': 'x-axis', 'visible': False, 'showticklabels': False}
+    fig['layout']['showlegend'] = False
+    fig.add_trace(colorbar_trace)
     return fig
 
 def get_rain_data():
@@ -156,10 +173,16 @@ if __name__ == '__main__':
     layout="wide"
     )
 
-    st.number_input("Legutóbbi mérések száma", min_value=1, max_value=120, value=1, key="number_of_reports")
+    st.number_input("Legutóbbi mérések száma", min_value=1, max_value=288, value=1, key="number_of_reports")
 
+    period=st.session_state.number_of_reports*timedelta(minutes=5)
+
+    st.markdown(f"""
+    Betöltött mérések száma: **{st.session_state.number_of_reports}**  
+    Vizsgált periódus hossza: **{period}**
+    """)
     st.plotly_chart(get_rain_data())
 
     
 
-
+    
