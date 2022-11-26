@@ -9,3 +9,8 @@ beautifulsoup4
 openpyxl
 xlsxwriter
 scrapy
+rasterio
+xarray
+colorcet
+datashader
+plotly
